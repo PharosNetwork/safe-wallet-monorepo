@@ -1,5 +1,5 @@
 import EthHashInfo from '@/components/common/EthHashInfo'
-import { useAddressName } from '@/components/common/NamedAddressInfo'
+// import { useAddressName } from '@/components/common/NamedAddressInfo'
 import useAddressBook from '@/hooks/useAddressBook'
 import { isCustomTxInfo } from '@/utils/transaction-guards'
 import { Chip } from '@mui/material'
@@ -14,12 +14,12 @@ const NameChip = ({ txData, txInfo }: { txData?: TransactionData; txInfo?: Trans
   const toName =
     nameFromAb || toInfo?.name || (toInfo && 'displayName' in toInfo ? String(toInfo.displayName || '') : undefined)
   const toLogo = toInfo?.logoUri
-  const contractInfo = useAddressName(toAddress, toName)
-  const name = toName || contractInfo?.name
-  const logo = toLogo || contractInfo?.logoUri
+  // const contractInfo = useAddressName(toAddress, toName)
+  const name = toName
+  const logo = toLogo
 
   const isInAddressBook = !!nameFromAb
-  const isUntrusted = !isInAddressBook && contractInfo.isUnverifiedContract
+  const isUntrusted = !isInAddressBook
 
   return toAddress && (name || logo) ? (
     <Chip

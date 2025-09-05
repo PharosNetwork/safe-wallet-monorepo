@@ -67,6 +67,7 @@ const ChainIndicator = ({
       width={imageSize}
       height={imageSize}
       loading="lazy"
+      style={{ borderRadius: '50%' }}
     />
   ) : (
     <SvgIcon
@@ -93,6 +94,7 @@ const ChainIndicator = ({
         [css.withLogo]: showLogo,
         [css.responsive]: responsive,
         [css.onlyLogo]: onlyLogo,
+        [css.borderRadius]: '50%',
       })}
     >
       {showLogo && logoComponent}

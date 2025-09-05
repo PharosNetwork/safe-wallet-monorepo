@@ -63,7 +63,7 @@ const IndexingStatus = () => {
   const time = formatDistanceToNow(data.lastSync, { addSuffix: true })
 
   return (
-    <Tooltip title={`Last synced with the blockchain ${time}`} placement="right" arrow>
+    <Tooltip style={{ display: 'block' }} title={`Last synced with the blockchain ${time}`} placement="right" arrow>
       <Button
         size="small"
         href={STATUS_PAGE}
@@ -78,10 +78,12 @@ const IndexingStatus = () => {
         sx={{
           fontSize: '12px',
           fontWeight: 'normal',
+          display: 'flex',
           p: 1,
           '& .MuiButton-startIcon': { marginLeft: 0 },
           '& .MuiButton-endIcon': { justifySelf: 'flex-end', marginLeft: 'auto' },
         }}
+        style={{ display: 'flex' }}
       >
         {status.text}
       </Button>

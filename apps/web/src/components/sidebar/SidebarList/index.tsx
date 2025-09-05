@@ -6,7 +6,6 @@ import ListItemText, { type ListItemTextProps } from '@mui/material/ListItemText
 import Link from 'next/link'
 import type { LinkProps } from 'next/link'
 import Badge from '@mui/material/Badge'
-
 import css from './styles.module.css'
 
 export const SidebarList = ({ children, ...rest }: Omit<ListProps, 'className'>): ReactElement => (

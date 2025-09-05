@@ -7,6 +7,10 @@ export const OVERVIEW_EVENTS = {
     action: 'Open wallet modal',
     category: OVERVIEW_CATEGORY,
   },
+  SUGGESTIONS: {
+    action: 'Suggest any new Feature',
+    category: OVERVIEW_CATEGORY,
+  },
   SWITCH_NETWORK: {
     action: 'Switch network',
     category: OVERVIEW_CATEGORY,

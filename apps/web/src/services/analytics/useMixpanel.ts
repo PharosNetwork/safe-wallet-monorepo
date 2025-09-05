@@ -1,6 +1,5 @@
 import { useEffect, useMemo } from 'react'
 import { useTheme } from '@mui/material/styles'
-import mixpanel from 'mixpanel-browser'
 import {
   mixpanelInit,
   mixpanelSetBlockchainNetwork,
@@ -54,12 +53,12 @@ const useMixpanel = () => {
     if (!isMixpanelEnabled) return
 
     if (isAnalyticsEnabled) {
-      mixpanel.opt_in_tracking()
+      // mixpanel.opt_in_tracking()
       if (!IS_PRODUCTION) {
         console.info('[MixPanel] - User opted in')
       }
     } else {
-      mixpanel.opt_out_tracking()
+      // mixpanel.opt_out_tracking()
       if (!IS_PRODUCTION) {
         console.info('[MixPanel] - User opted out')
       }
