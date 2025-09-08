@@ -85,11 +85,9 @@ const SidebarFooter = (): ReactElement => {
         </SidebarListItemText>
       </ListItem>
 
-      {!IS_PRODUCTION && (
-        <Stack style={{ display: 'block' }} direction="row" alignItems="center" spacing={1} mx={1}>
-          <IndexingStatus />
-        </Stack>
-      )}
+      <Stack style={{ display: 'block' }} direction="row" alignItems="center" spacing={1} mx={1}>
+        <IndexingStatus />
+      </Stack>
     </SidebarList>
   )
 }
