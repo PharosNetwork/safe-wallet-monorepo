@@ -16,6 +16,8 @@ export const GATEWAY_URL_PRODUCTION =
 export const GATEWAY_URL_STAGING =
   process.env.NEXT_PUBLIC_GATEWAY_URL_STAGING || 'https://gateway.staging.safe.pharosnetwork.xyz'
 
+export const STATUS_PAGE = `https://tx-status-app.safe.protofire.io/?serviceUrl=${IS_PRODUCTION ? GATEWAY_URL_PRODUCTION : GATEWAY_URL_STAGING}`
+
 // Magic numbers
 export const POLLING_INTERVAL = 15_000
 export const BASE_TX_GAS = 21_000
