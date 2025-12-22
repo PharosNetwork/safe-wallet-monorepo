@@ -58,7 +58,7 @@
     "@safe-global/protocol-kit": "^5.2.21",
     "@safe-global/safe-apps-sdk": "^9.1.0",
     "@safe-global/safe-client-gateway-sdk": "v1.60.1",
-    "@safe-global/safe-deployments": "^1.37.49",
+    "@safe-global/safe-deployments": "patch:@safe-global/safe-deployments@npm%3A1.37.49#~/.yarn/patches/@safe-global-safe-deployments-npm-1.37.49-abbdcadb50.patch",
     "@safe-global/safe-gateway-typescript-sdk": "3.23.1",
     "@safe-global/safe-modules-deployments": "^2.2.20",
     "@safe-global/store": "workspace:^",
