@@ -9,14 +9,16 @@ export const DEFAULT_TESTNET_CHAIN_ID = +(process.env.NEXT_PUBLIC_DEFAULT_TESTNE
 export const DEFAULT_MAINNET_CHAIN_ID = +(process.env.NEXT_PUBLIC_DEFAULT_MAINNET_CHAIN_ID ?? chains['pharos'])
 
 // default chain ID used in the application
-export const DEFAULT_CHAIN_ID = IS_PRODUCTION ? chains['pharos'] : chains['pharos-atlantic']
+export const DEFAULT_CHAIN_ID = IS_PRODUCTION ? DEFAULT_MAINNET_CHAIN_ID : DEFAULT_TESTNET_CHAIN_ID
 
 export const GATEWAY_URL_PRODUCTION =
   process.env.NEXT_PUBLIC_GATEWAY_URL_PRODUCTION || 'https://gateway.safe.pharosnetwork.xyz'
 export const GATEWAY_URL_STAGING =
   process.env.NEXT_PUBLIC_GATEWAY_URL_STAGING || 'https://gateway.staging.safe.pharosnetwork.xyz'
 
-export const STATUS_PAGE = `https://tx-status-app.safe.protofire.io/?serviceUrl=${IS_PRODUCTION ? GATEWAY_URL_PRODUCTION : GATEWAY_URL_STAGING}`
+export const STATUS_PAGE = `https://tx-status-app.safe.protofire.io/?serviceUrl=${
+  IS_PRODUCTION ? GATEWAY_URL_PRODUCTION : GATEWAY_URL_STAGING
+}`
 
 // Magic numbers
 export const POLLING_INTERVAL = 15_000
