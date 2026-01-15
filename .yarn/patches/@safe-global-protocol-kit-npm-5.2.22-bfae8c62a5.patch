@@ -1,0 +1,12 @@
+diff --git a/dist/src/utils/eip-3770/config.js b/dist/src/utils/eip-3770/config.js
+index 39496823a790e217d56921f6c71bd4228af8de0f..9f2809a042a662b757397bd964f6e80f7bf6a9cb 100644
+--- a/dist/src/utils/eip-3770/config.js
++++ b/dist/src/utils/eip-3770/config.js
+@@ -155,6 +155,7 @@ exports.networks = [
+     { chainId: 1559n, shortName: 'tenet' },
+     { chainId: 1625n, shortName: 'gravity' },
+     { chainId: 1663n, shortName: 'Gobi' },
++    { chainId: 1672n, shortName: 'pharos' },
+     { chainId: 1729n, shortName: 'reya' },
+     { chainId: 1740n, shortName: 'metall2-testnet' },
+     { chainId: 1750n, shortName: 'metall2' },
