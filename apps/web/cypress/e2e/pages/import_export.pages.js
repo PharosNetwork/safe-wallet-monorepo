@@ -30,7 +30,6 @@ export const darkModeStr = 'Dark mode'
 const importMessages = [
   'Added Safe Accounts on 4 chains',
   'Address book for 4 chains',
-  'Address book for 4 chains',
   'Settings (appearance, currency, hidden tokens and custom environment variables)',
   'Bookmarked Safe Apps',
 ]
