@@ -43,6 +43,7 @@ export enum FEATURES {
   SPACES = 'SPACES',
   EARN = 'EARN',
   MIXPANEL = 'MIXPANEL',
+  SUNSET_BANNER = 'SUNSET_BANNER',
 }
 
 const MIN_SAFE_VERSION = '1.3.0'
