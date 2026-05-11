@@ -13,6 +13,7 @@ import { CircularProgress, Box, Button, CardActions, Divider, Alert } from '@mui
 import classNames from 'classnames'
 
 import ErrorMessage from '@/components/tx/ErrorMessage'
+import { FeeTokenSettingsHint } from '@/components/tx/FeeTokenSettingsHint'
 import { trackError, Errors } from '@/services/exceptions'
 import { useCurrentChain } from '@/hooks/useChains'
 import { getTxOptions } from '@/utils/transactions'
@@ -134,6 +135,7 @@ export const CounterfactualForm = ({
         </Alert>
 
         <div className={classNames(commonCss.params)}>
+          <FeeTokenSettingsHint />
           <AdvancedParams
             willExecute
             params={advancedParams}

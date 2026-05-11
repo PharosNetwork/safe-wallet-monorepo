@@ -2,6 +2,8 @@ import { Box } from '@mui/material'
 import css from '@/components/new-safe/create/steps/StatusStep/LoadingSpinner/styles.module.css'
 import classnames from 'classnames'
 import { useCallback, useEffect, useRef } from 'react'
+import TEMPLATE_CONFIG from '@/config/templateConfig'
+import darkPalette from '@/components/theme/darkPalette'
 
 const rectTlEndTransform = 'translateX(0) translateY(20px) scaleY(1.1)'
 const rectTrEndTransform = 'translateX(30px) scaleX(2.3)'
@@ -59,13 +61,16 @@ const LoadingSpinner = ({ status }: { status: SpinnerStatus }) => {
     }
   }, [isSuccess, onFinish])
 
+  const backgroundStyle =
+    TEMPLATE_CONFIG.IS_LICENSED || TEMPLATE_CONFIG.WELCOME_PALETTE ? { background: darkPalette.primary.main } : {}
+
   return (
     <Box className={classnames(css.box, { [css.rectError]: isError }, { [css.rectSuccess]: isSuccess })}>
-      <div className={classnames(css.rect, css.rectTl)} ref={rectTl} />
-      <div className={classnames(css.rect, css.rectTr)} ref={rectTr} />
-      <div className={classnames(css.rect, css.rectBl)} ref={rectBl} />
-      <div className={classnames(css.rect, css.rectBr)} ref={rectBr} />
-      <div className={classnames(css.rect, css.rectCenter)} ref={rectCenter} />
+      <div className={classnames(css.rect, css.rectTl)} ref={rectTl} style={backgroundStyle} />
+      <div className={classnames(css.rect, css.rectTr)} ref={rectTr} style={backgroundStyle} />
+      <div className={classnames(css.rect, css.rectBl)} ref={rectBl} style={backgroundStyle} />
+      <div className={classnames(css.rect, css.rectBr)} ref={rectBr} style={backgroundStyle} />
+      <div className={classnames(css.rect, css.rectCenter)} ref={rectCenter} style={backgroundStyle} />
 
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>

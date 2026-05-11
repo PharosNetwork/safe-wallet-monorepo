@@ -1,0 +1,46 @@
+diff --git a/dist/assets/allowance-module/v0.1.0/allowance-module.json b/dist/assets/allowance-module/v0.1.0/allowance-module.json
+index 8fd727711be01a246b52ec063017f76e6eda7dc8..fc28e7125d58635ee37aacc71ee932569e9bda1e 100644
+--- a/dist/assets/allowance-module/v0.1.0/allowance-module.json
++++ b/dist/assets/allowance-module/v0.1.0/allowance-module.json
+@@ -11,12 +11,14 @@
+         "100": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
+         "137": "0x1Fb403834C911eB98d56E74F5182b0d64C3b3b4D",
+         "246": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
++        "1672": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
+         "8453": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
+         "42220": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
+         "43114": "0x1Fb403834C911eB98d56E74F5182b0d64C3b3b4D",
+         "73799": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
+         "80094": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
+         "534352": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134",
++        "688689": "0xE46FE78DBfCa5E835667Ba9dCd3F3315E7623F8a",
+         "11155111": "0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134"
+     },
+     "abi": [
+diff --git a/dist/assets/allowance-module/v0.1.1/allowance-module.json b/dist/assets/allowance-module/v0.1.1/allowance-module.json
+index 9fd48996a2d44ef4877f667cc54f19b116cb384e..344f6f3411a65fd5c3aafc48a49eb8f63ec490f4 100644
+--- a/dist/assets/allowance-module/v0.1.1/allowance-module.json
++++ b/dist/assets/allowance-module/v0.1.1/allowance-module.json
+@@ -14,12 +14,13 @@
+         "360": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "988": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "999": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
++        "1672": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "2201": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "2818": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "2910": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "3338": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+-        "4326": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "3637": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
++        "4326": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "9745": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "10143": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "11011": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+@@ -35,6 +36,7 @@
+         "88888": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "102030": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "560048": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
++        "688689": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "747474": "0xAA46724893dedD72658219405185Fb0Fc91e091C",
+         "5042002": "0xAA46724893dedD72658219405185Fb0Fc91e091C"
+     },

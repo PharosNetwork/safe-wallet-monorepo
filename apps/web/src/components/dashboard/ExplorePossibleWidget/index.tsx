@@ -59,7 +59,7 @@ const EXPLORE_POSSIBLE_CONFIG = [
       light: '/images/explore-possible/spaces-large.svg',
       dark: '/images/explore-possible/spaces-large-dark.svg',
     },
-    getLink: () => 'https://app.safe.global/welcome/spaces',
+    getLink: () => `${typeof window !== 'undefined' ? window.location.origin : ''}/welcome/spaces`,
   },
   {
     id: 'transaction-builder',
@@ -92,6 +92,7 @@ const ExplorePossibleWidget = () => {
   const router = useRouter()
   const txBuilderApp = useTxBuilderApp()
   const isDarkMode = useDarkMode()
+  const isSpacesEnabled = useHasFeature(FEATURES.SPACES)
   const isSwapEnabled = useHasFeature(FEATURES.NATIVE_SWAPS)
   const isEurcvBoostEnabled = useHasFeature(FEATURES.EURCV_BOOST)
 
@@ -110,6 +111,10 @@ const ExplorePossibleWidget = () => {
         if (config.id === 'earn' && isEurcvBoostEnabled !== true) {
           return false
         }
+        // Filter out spaces (Manage multiple Safes) on forks or when chain has no Spaces feature
+        if (config.id === 'spaces' && isSpacesEnabled !== true) {
+          return false
+        }
         return true
       }).map((config) => ({
         id: config.id,
@@ -119,7 +124,7 @@ const ExplorePossibleWidget = () => {
         iconUrl: isDarkMode ? config.iconUrl.dark : config.iconUrl.light,
         link: config.getLink(router.query.safe, txBuilderApp.link),
       })),
-    [router.query.safe, txBuilderApp, isDarkMode, isSwapEnabled, isEurcvBoostEnabled],
+    [router.query.safe, txBuilderApp, isDarkMode, isSpacesEnabled, isSwapEnabled, isEurcvBoostEnabled],
   )
 
   const updateScrollState = () => {

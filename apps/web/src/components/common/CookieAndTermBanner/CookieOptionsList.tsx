@@ -2,6 +2,7 @@ import type { ReactElement } from 'react'
 import { Grid, Box, Typography, Checkbox, FormControlLabel } from '@mui/material'
 import { Controller, type Control } from 'react-hook-form'
 import { CookieAndTermType } from '@/store/cookiesAndTermsSlice'
+import { useIsOfficialHost } from '@/hooks/useIsOfficialHost'
 import { styles } from './constants'
 
 type CookieFormData = {
@@ -22,6 +23,8 @@ const CookieCheckbox = ({
 }) => <FormControlLabel label={label} checked={checked} control={<Checkbox {...checkboxProps} />} sx={{ mt: '-9px' }} />
 
 const CookieOptionsList = ({ control }: { control: Control<CookieFormData> }): ReactElement => {
+  const isOfficialHost = useIsOfficialHost()
+
   return (
     <Grid item xs={12} sm>
       <Box sx={styles.optionBox}>
@@ -30,25 +33,27 @@ const CookieOptionsList = ({ control }: { control: Control<CookieFormData> }): R
         <Typography variant="body2">Locally stored data for core functionality</Typography>
       </Box>
 
-      <Box sx={styles.optionBox}>
-        <Controller
-          name={CookieAndTermType.UPDATES}
-          control={control}
-          render={({ field }) => (
-            <CookieCheckbox
-              checkboxProps={{
-                ...field,
-                checked: field.value,
-                id: 'beamer',
-              }}
-              label="Beamer"
-              checked={field.value}
-            />
-          )}
-        />
-        <br />
-        <Typography variant="body2">New features and product announcements</Typography>
-      </Box>
+      {isOfficialHost ? (
+        <Box sx={styles.optionBox}>
+          <Controller
+            name={CookieAndTermType.UPDATES}
+            control={control}
+            render={({ field }) => (
+              <CookieCheckbox
+                checkboxProps={{
+                  ...field,
+                  checked: field.value,
+                  id: 'beamer',
+                }}
+                label="Beamer"
+                checked={field.value}
+              />
+            )}
+          />
+          <br />
+          <Typography variant="body2">New features and product announcements</Typography>
+        </Box>
+      ) : null}
 
       <Box>
         <Controller

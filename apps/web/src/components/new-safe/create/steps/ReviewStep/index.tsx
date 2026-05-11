@@ -24,6 +24,7 @@ import { useEstimateSafeCreationGas } from '@/components/new-safe/create/useEsti
 import useSyncSafeCreationStep from '@/components/new-safe/create/useSyncSafeCreationStep'
 import ReviewRow from '@/components/new-safe/ReviewRow'
 import ErrorMessage from '@/components/tx/ErrorMessage'
+import { TempoGasTokenSafeCreationHint } from '@/components/tx/FeeTokenSettingsHint'
 import { ExecutionMethod, ExecutionMethodSelector } from '@/components/tx/ExecutionMethodSelector'
 import { useCurrentChain, useHasFeature } from '@/hooks/useChains'
 import useGasPrice from '@/hooks/useGasPrice'
@@ -407,6 +408,8 @@ const ReviewStep = ({ data, onSubmit, onBack, setStep }: StepRenderProps<NewSafe
               payMethod={payMethod}
               setPayMethod={setPayMethod}
             />
+
+            <TempoGasTokenSafeCreationHint />
 
             {canRelay && payMethod === PayMethod.PayNow && (
               <>

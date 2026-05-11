@@ -13,7 +13,7 @@ import NetworkSelector from '@/components/common/NetworkSelector'
 import SafeTokenWidget from '@/components/common/SafeTokenWidget'
 import NotificationCenter from '@/components/notification-center/NotificationCenter'
 import { AppRoutes } from '@/config/routes'
-import SafeLabsLogo from '@/public/images/logo-safe-labs.svg'
+import SafeLogo from '@/public/images/logo.svg'
 import SafeLogoMobile from '@/public/images/logo-no-text.svg'
 import Link from 'next/link'
 import useSafeAddress from '@/hooks/useSafeAddress'
@@ -24,7 +24,8 @@ import Track from '@/components/common/Track'
 import { OVERVIEW_EVENTS, OVERVIEW_LABELS } from '@/services/analytics'
 import { useSafeTokenEnabled } from '@/hooks/useSafeTokenEnabled'
 import { useIsOfficialHost } from '@/hooks/useIsOfficialHost'
-import { BRAND_LOGO, BRAND_NAME } from '@/config/constants'
+import { BRAND_NAME } from '@/config/constants'
+import TEMPLATE_CONFIG from '@/config/templateConfig'
 
 type HeaderProps = {
   onMenuToggle?: Dispatch<SetStateAction<boolean>>
@@ -79,13 +80,16 @@ const Header = ({ onMenuToggle, onBatchToggle }: HeaderProps): ReactElement => {
 
       <div className={classnames(css.element, css.logoMobile)}>
         <Link href={logoHref} passHref>
-          {isOfficialHost ? <SafeLogoMobile alt="Safe logo" /> : null}
+          <SafeLogoMobile alt={isOfficialHost ? 'Safe logo' : BRAND_NAME} />
         </Link>
       </div>
 
       <div className={classnames(css.element, css.hideMobile, css.logo)}>
         <Link href={logoHref} passHref>
-          {isOfficialHost ? <SafeLabsLogo alt={BRAND_NAME} /> : BRAND_LOGO && <img src={BRAND_LOGO} alt={BRAND_NAME} />}
+          <SafeLogo
+            alt={isOfficialHost ? 'Safe logo' : BRAND_NAME}
+            style={{ height: TEMPLATE_CONFIG.LOGO_DIMENSIONS?.HEADER?.H ?? '' }}
+          />
         </Link>
       </div>
 

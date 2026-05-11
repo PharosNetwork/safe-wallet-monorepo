@@ -15,6 +15,9 @@ import ArrowIconSE from '@/public/images/common/arrow-down-left.svg'
 import { AppRoutes } from '@/config/routes'
 import { SWAP_EVENTS, SWAP_LABELS } from '@/services/analytics/events/swaps'
 import useIsSwapFeatureEnabled from '@/features/swap/hooks/useIsSwapFeatureEnabled'
+import { useHasFeature } from '@/hooks/useChains'
+import { FEATURES } from '@safe-global/utils/utils/chains'
+import { TokenType } from '@safe-global/safe-gateway-typescript-sdk'
 import TotalAssetValue from '@/components/balances/TotalAssetValue'
 import CheckWallet from '@/components/common/CheckWallet'
 import OverviewSkeleton from './OverviewSkeleton'
@@ -27,6 +30,7 @@ const Overview = (): ReactElement => {
   const { setTxFlow } = useContext(TxModalContext)
   const router = useRouter()
   const isSwapFeatureEnabled = useIsSwapFeatureEnabled()
+  const hideNativeToken = useHasFeature(FEATURES.HIDE_NATIVE_TOKEN)
   const portfolio = useLoadFeature(PortfolioFeature)
 
   const isInitialState = !safeLoaded && !safeLoading
@@ -43,6 +47,11 @@ const Overview = (): ReactElement => {
 
   const noAssets = balancesLoaded && items.length === 0
 
+  // Check if we should hide native token value when Safe is not activated
+  const firstBalanceItem = balances.items[0]
+  const isNativeToken = firstBalanceItem?.tokenInfo.type === TokenType.NATIVE_TOKEN
+  const shouldHideNativeTokenValue = !safe.deployed && hideNativeToken === true && isNativeToken
+
   if (isLoading) return <OverviewSkeleton />
 
   return (
@@ -58,7 +67,11 @@ const Overview = (): ReactElement => {
           alignItems={{ xs: 'flex-start', md: 'flex-end' }}
           justifyContent="space-between"
         >
-          <TotalAssetValue fiatTotal={balances.fiatTotal} size="lg" title="Total balance" />
+          {shouldHideNativeTokenValue ? (
+            <TotalAssetValue fiatTotal="0" size="lg" title="Total balance" />
+          ) : (
+            <TotalAssetValue fiatTotal={balances.fiatTotal} size="lg" title="Total balance" />
+          )}
 
           {safe.deployed && (
             <Stack

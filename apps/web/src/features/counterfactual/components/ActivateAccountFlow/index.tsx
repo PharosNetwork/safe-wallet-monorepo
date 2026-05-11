@@ -5,6 +5,7 @@ import { TxModalContext } from '@/components/tx-flow'
 import TxCard from '@/components/tx-flow/common/TxCard'
 import TxLayout from '@/components/tx-flow/common/TxLayout'
 import ErrorMessage from '@/components/tx/ErrorMessage'
+import { FeeTokenSettingsHint } from '@/components/tx/FeeTokenSettingsHint'
 import { ExecutionMethod, ExecutionMethodSelector } from '@/components/tx/ExecutionMethodSelector'
 import { safeCreationDispatch, SafeCreationEvent } from '../../services/safeCreationEvents'
 import { selectUndeployedSafe } from '../../store/undeployedSafesSlice'
@@ -188,6 +189,7 @@ const ActivateAccountFlow = () => {
             </Grid>
           )}
 
+          <FeeTokenSettingsHint />
           <Grid data-testid="network-fee-section" container spacing={3}>
             <ReviewRow
               name="Est. network fee"

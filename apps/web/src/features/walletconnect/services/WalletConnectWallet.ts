@@ -29,7 +29,7 @@ class WalletConnectWallet {
   /**
    * Initialize WalletConnect wallet SDK
    */
-  public async init() {
+  public async init(origin?: string) {
     if (this.web3Wallet) return
 
     const core = new Core({
@@ -41,7 +41,7 @@ class WalletConnectWallet {
 
     const web3wallet = await WalletKit.init({
       core,
-      metadata: SAFE_WALLET_METADATA,
+      metadata: { ...SAFE_WALLET_METADATA, ...(origin ? { url: origin } : {}) },
     })
 
     this.web3Wallet = web3wallet

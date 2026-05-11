@@ -5,7 +5,7 @@ export const AppRoutes = {
   userSettings: '/user-settings',
   terms: '/terms',
   safeLabsTerms: '/safe-labs-terms',
-  swap: '/swap',
+  swap: '/lifi-swap',
   stake: '/stake',
   privacy: '/privacy',
   licenses: '/licenses',

@@ -61,6 +61,12 @@ const getTenderlyProjectFromUrl = (tenderlyUrl?: string): { org: string; project
 }
 
 export const getSimulationLink = (simulationId: string, customTenderly?: EnvState['tenderly']): string => {
+  // TODO: fix it and put to .env
+  const TEMPORARY_WORKAROUND = true
+  if(TEMPORARY_WORKAROUND){
+    return `${TENDERLY_DASHBOARD_URL}/shared/simulation/${simulationId}`
+  }
+
   const parsedTenderly = getTenderlyProjectFromUrl(customTenderly?.url)
 
   if (parsedTenderly) {

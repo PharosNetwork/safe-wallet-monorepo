@@ -37,6 +37,7 @@ export const ChainIcon = ({ chainId }: { chainId: string }) => {
       width={40}
       height={40}
       loading="lazy"
+      style={{ borderRadius: '50%' }}
     />
   )
 }

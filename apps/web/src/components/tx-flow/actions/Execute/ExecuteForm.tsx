@@ -4,6 +4,7 @@ import { type ReactElement, type SyntheticEvent, useContext, useState, useEffect
 import { Box, CardActions, Divider, Tooltip } from '@mui/material'
 import classNames from 'classnames'
 import ErrorMessage from '@/components/tx/ErrorMessage'
+import { FeeTokenSettingsHint } from '@/components/tx/FeeTokenSettingsHint'
 import { trackError, Errors } from '@/services/exceptions'
 import { useCurrentChain } from '@/hooks/useChains'
 import { getTxOptions } from '@/utils/transactions'
@@ -177,6 +178,8 @@ export const ExecuteForm = ({
     <>
       <form onSubmit={handleSubmit}>
         <div className={classNames(commonCss.params, { [css.noBottomBorderRadius]: canRelay })}>
+          <FeeTokenSettingsHint />
+
           <AdvancedParams
             willExecute
             params={advancedParams}

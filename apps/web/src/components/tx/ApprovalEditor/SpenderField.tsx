@@ -44,7 +44,7 @@ export const SpenderField = ({ address }: { address: string }) => {
       >
         Spender
       </Typography>
-      <div>
+      <div style={{ overflow: 'hidden' }}>
         <EthHashInfo
           avatarSize={24}
           address={address}

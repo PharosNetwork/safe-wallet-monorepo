@@ -3,6 +3,10 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useIsOfficialHost } from '@/hooks/useIsOfficialHost'
 import { BRAND_NAME } from '@/config/constants'
+import ReactMarkdown from 'react-markdown'
+import { Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { COOKIE_LINK } from '@/config/constants.extra'
 import SafeCookiePolicy from '@/markdown/cookie/cookie.md'
 import type { MDXComponents } from 'mdx/types'
 import CustomLink from '@/components/common/CustomLink'
@@ -27,7 +31,21 @@ const overrideComponents: MDXComponents = {
 
 const CookiePolicy: NextPage = () => {
   const isOfficialHost = useIsOfficialHost()
+  const [content, setContent] = useState<string>('')
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch(COOKIE_LINK)
+        let text = await response.text()
+        text = text.replace(/\${origin}/g, window.location.origin)
+        setContent(text)
+      } catch (error) {
+        console.error('Error fetching cookie policy:', error)
+      }
+    }
 
+    fetchContent()
+  }, [])
   return (
     <>
       <Head>
@@ -35,7 +53,11 @@ const CookiePolicy: NextPage = () => {
       </Head>
 
       <main style={{ lineHeight: '1.5' }}>
-        {isOfficialHost && <SafeCookiePolicy components={overrideComponents} />}
+        {isOfficialHost ? (
+          <SafeCookiePolicy components={overrideComponents} />
+        ) : (
+          <>{content ? <ReactMarkdown>{content}</ReactMarkdown> : <Typography>Loading cookie policy...</Typography>}</>
+        )}
       </main>
     </>
   )

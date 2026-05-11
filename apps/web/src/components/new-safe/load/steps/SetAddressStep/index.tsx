@@ -27,9 +27,11 @@ import useChainId from '@/hooks/useChainId'
 import { useAppSelector } from '@/store'
 import { selectAddedSafes } from '@/store/addedSafesSlice'
 import { LOAD_SAFE_EVENTS, trackEvent } from '@/services/analytics'
-import { AppRoutes } from '@/config/routes'
+
 import MUILink from '@mui/material/Link'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { getTermsLink, getPrivacyLink } from '@/utils/templateConfig'
 
 enum Field {
   name = 'name',
@@ -42,6 +44,7 @@ type FormData = {
 }
 
 const SetAddressStep = ({ data, onSubmit, onBack }: StepRenderProps<LoadSafeFormData>) => {
+  const router = useRouter()
   const currentChainId = useChainId()
   const addedSafes = useAppSelector((state) => selectAddedSafes(state, currentChainId))
   const [triggerGetSafe] = useLazySafesGetSafeV1Query()
@@ -100,6 +103,13 @@ const SetAddressStep = ({ data, onSubmit, onBack }: StepRenderProps<LoadSafeForm
       [Field.name]: formData.name || fallbackName,
     })
   }
+
+  // Get terms and privacy links from template config or fallback to default routes
+  const getHref = (path: string): string => {
+    return router.pathname === path ? '' : path
+  }
+  const termsLink = getTermsLink(router.pathname, getHref)
+  const privacyLink = getPrivacyLink()
 
   return (
     <FormProvider {...formMethods}>
@@ -163,13 +173,18 @@ const SetAddressStep = ({ data, onSubmit, onBack }: StepRenderProps<LoadSafeForm
             }}
           >
             By continuing you consent to the{' '}
-            <Link href={AppRoutes.terms} passHref legacyBehavior>
+            <Link href={termsLink} passHref legacyBehavior>
               <MUILink>terms of use</MUILink>
-            </Link>{' '}
-            and{' '}
-            <Link href={AppRoutes.privacy} passHref legacyBehavior>
-              <MUILink>privacy policy</MUILink>
             </Link>
+            {privacyLink && (
+              <>
+                {' '}
+                and{' '}
+                <Link href={privacyLink} passHref legacyBehavior>
+                  <MUILink>privacy policy</MUILink>
+                </Link>
+              </>
+            )}
             .
           </Typography>
         </Box>

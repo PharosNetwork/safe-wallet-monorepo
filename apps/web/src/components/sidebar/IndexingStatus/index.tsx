@@ -3,7 +3,7 @@ import { formatDistanceToNow } from 'date-fns'
 import { useChainsGetIndexingStatusV1Query } from '@safe-global/store/gateway/AUTO_GENERATED/chains'
 import useChainId from '@/hooks/useChainId'
 import { OpenInNewRounded } from '@mui/icons-material'
-import { STATUS_PAGE_URL } from '@/config/constants'
+import { STATUS_PAGE } from '@/config/constants'
 
 const MAX_SYNC_DELAY = 1000 * 60 * 5 // 5 minutes
 const POLL_INTERVAL = 1000 * 60 // 1 minute
@@ -62,7 +62,7 @@ const IndexingStatus = () => {
     <Tooltip title={`Last synced with the blockchain ${time}`} placement="right" arrow>
       <Button
         size="small"
-        href={STATUS_PAGE_URL}
+        href={STATUS_PAGE}
         target="_blank"
         data-testid="index-status"
         startIcon={

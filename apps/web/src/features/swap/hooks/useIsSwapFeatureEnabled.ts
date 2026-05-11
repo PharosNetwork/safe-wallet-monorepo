@@ -5,7 +5,8 @@ import { FEATURES } from '@safe-global/utils/utils/chains'
 
 const useIsSwapFeatureEnabled = () => {
   const isBlockedCountry = useContext(GeoblockingContext)
-  return useHasFeature(FEATURES.NATIVE_SWAPS) && !isBlockedCountry
+  // Converted from NATIVE_SWAPS to NATIVE_SWAPS_LIFI for our lifi widget
+  return useHasFeature(FEATURES.NATIVE_SWAPS_LIFI) && !isBlockedCountry
 }
 
 export default useIsSwapFeatureEnabled
