@@ -2,7 +2,7 @@ import FirstSteps from '@/components/dashboard/FirstSteps'
 import useSafeInfo from '@/hooks/useSafeInfo'
 import { type ReactElement, useMemo } from 'react'
 import dynamic from 'next/dynamic'
-import { Stack } from '@mui/material'
+import { Grid, Stack } from '@mui/material'
 import PendingTxsList from '@/components/dashboard/PendingTxs/PendingTxsList'
 import AssetsWidget from '@/components/dashboard/Assets'
 import Overview from '@/components/dashboard/Overview/Overview'
@@ -42,6 +42,7 @@ import {
 } from '@/features/hypernative'
 import { useLoadFeature } from '@/features/__core__'
 import { EurcvBoostBanner, eurcvBoostBannerID } from '@/components/dashboard/NewsCarousel/banners/EurcvBoostBanner'
+import { SunsetBanner } from '@/components/dashboard/SunsetBanner'
 
 const RecoveryHeader = dynamic(() => import('@/features/recovery/components/RecoveryHeader'))
 const PositionsWidget = dynamic(() => import('@/features/positions/components/PositionsWidget'))
@@ -90,6 +91,22 @@ const Dashboard = (): ReactElement => {
     <>
       <div className={css.dashboardGrid}>
         <div className={css.leftCol}>
+      <Grid container spacing={3}>
+        {supportsRecovery && <RecoveryHeader />}
+
+        <Grid item xs={12} className={css.hideIfEmpty} sx={{ '& > div': { m: 0 } }}>
+          <InconsistentSignerSetupWarning />
+        </Grid>
+
+        <Grid item xs={12} className={css.hideIfEmpty} sx={{ '& > div': { m: 0 } }}>
+          <SunsetBanner />
+        </Grid>
+
+        <Grid item xs={12} className={css.hideIfEmpty}>
+          <UnsupportedMastercopyWarning />
+        </Grid>
+
+        <Grid item xs={12}>
           <Overview />
 
           {noAssets ? (
@@ -122,6 +139,8 @@ const Dashboard = (): ReactElement => {
               <NewsDisclaimers />
             </>
           )}
+        </Grid>
+      </Grid>
         </div>
 
         <div className={css.rightCol}>
