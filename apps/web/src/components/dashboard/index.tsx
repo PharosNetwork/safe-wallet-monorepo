@@ -139,6 +139,8 @@ const Dashboard = (): ReactElement => {
               <NewsDisclaimers />
             </>
           )}
+        </Grid>
+      </Grid>
         </div>
 
         <div className={css.rightCol}>
